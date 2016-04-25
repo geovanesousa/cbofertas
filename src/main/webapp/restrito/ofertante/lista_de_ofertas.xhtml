@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view renderKitId="PRIMEFACES_MOBILE" />
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<pm:page id="first">
+		<pm:header title="Minhas ofertas" swatch="b" style="font-size: small" />
+		<div align="center">
+			<h:form enctype="multipart/form-data" style="width:85%"
+				prependId="false">
+				<div>
+					<ui:include src="/templates/menu_ofe.xhtml" />
+				</div>
+				<p:commandButton value="Atualizar Lista" style="font-size: small"
+                                     icon="ui-icon-back" ajax="false"
+                                     action="#{ofertaBean.listaOfertasPorCnpj}" />
+				<br />
+				<p:dataTable id="ofe" var="oferta" value="#{ofertaBean.ofertas}"
+					paginator="true" rows="10">
+					<f:facet name="header">
+            		Ofertas
+        			</f:facet>
+					<p:column headerText="Cód.">
+						<h:outputText value="#{oferta.id}" />
+					</p:column>
+					<p:column headerText="Título">
+						<h:outputText value="#{oferta.nomeOferta}" />
+					</p:column>
+					<p:column headerText="Preço">
+						<h:outputText value="#{oferta.preco}" />
+					</p:column>
+					<p:column headerText="Excluir">
+						<p:commandLink ajax="false" action="#{ofertaBean.excluirOfertaPorId}" 
+						value="Excluir" >
+							<f:setPropertyActionListener target="#{ofertaBean.id}" 
+							value="#{oferta.id}" />
+						</p:commandLink> 
+					</p:column>
+				</p:dataTable>
+			</h:form>
+			<br />
+
+		</div>
+	</pm:page>
+</h:body>
+
+</html>

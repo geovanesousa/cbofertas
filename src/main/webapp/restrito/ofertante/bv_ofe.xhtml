@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view renderKitId="PRIMEFACES_MOBILE" />
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<pm:page id="first">
+		<pm:header title="CB Ofertas" swatch="b" style="font-size: small" />
+		<div align="center">
+			<h:form enctype="multipart/form-data" style="width:85%"
+				prependId="false">
+				<br />
+				<p:outputLabel value="Bem vindo as opções de ofertante!" />
+				<p:messages id="messages" autoUpdate="true">
+				</p:messages>
+				<div>
+					<ui:include src="/templates/menu_ofe.xhtml" />
+				</div>
+				<p:commandButton value="Sair" style="font-size: small"
+					icon="ui-icon-delete" ajax="false"
+					action="#{loginBean.registraSaida}" />
+			</h:form>
+			<br />
+		</div>
+	</pm:page>
+</h:body>
+</html>

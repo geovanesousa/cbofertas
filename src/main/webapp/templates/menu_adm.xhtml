@@ -1,0 +1,29 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<pm:content styleClass="jqm-content">
+		<p:commandButton id="btn-basic" style="font-size: small" value="Menu"
+			type="button" />
+	</pm:content>
+	<p:overlayPanel for="btn-basic" widgetVar="pnl-basic" at="left"
+		showEffect="overlay">
+		<h2>Opções de Administrador</h2>
+		<p:menu>
+			<p:submenu label="Gerenciar ofertantes">
+				<p:menuitem value="Inserir" 
+				url="/faces/restrito/adm/inserir_ofertante.xhtml" />
+				<p:menuitem value="Consultar/Atualizar" 
+				url="/faces/restrito/adm/consultar_ofertante.xhtml" />
+				<p:menuitem value="Excluir" 
+				url="/faces/restrito/adm/excluir_ofertante.xhtml" />
+			</p:submenu>
+			<p:submenu label="Ir para">
+				<p:menuitem value="Página Inicial" url="/faces/restrito/adm/bv_adm.xhtml" />
+			</p:submenu>
+		</p:menu>
+	</p:overlayPanel>
+</ui:composition>

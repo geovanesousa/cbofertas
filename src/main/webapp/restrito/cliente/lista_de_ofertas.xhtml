@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view renderKitId="PRIMEFACES_MOBILE" />
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<pm:page id="first">
+		<pm:header title="Ofertas do Bairro" swatch="b" style="font-size: small" />
+		<div align="center">
+			<h:form enctype="multipart/form-data" style="width:85%"
+				prependId="false">
+				<br />
+				<p:commandButton style="font-size: small" ajax="false"
+					action="#{ofertaBean.paginaInicial}" value="Voltar" />
+				<br />
+				<p:dataGrid id="cars" var="oferta" value="#{ofertaBean.ofertas}"
+					columns="1" paginator="true" rows="10">
+					<f:facet name="header">
+            		Ofertas
+        			</f:facet>
+					<p:panel header="#{oferta.nomeOferta}" toggleable="true">
+						<h:outputText value="#{oferta.descricao}" />
+						<h:outputText value=" | Preço R$: #{oferta.preco}" />
+						<h:outputText
+							value=" | Onde comprar: #{oferta.ofertante.pessoaJuridica.
+							nomeFantasia}" />
+						<h:outputText
+							value=" | Endereço: #{oferta.ofertante.pessoaJuridica.
+							endereco.logradouro}" />
+						<h:outputText
+							value=" Número: #{oferta.ofertante.pessoaJuridica.
+							endereco.numero}" />
+						<h:outputText
+							value=", #{oferta.ofertante.pessoaJuridica.
+							endereco.complemento}" />
+						<h:outputText value=" | Telefone: #{oferta.ofertante.telefone}" />
+						<h:outputText value=" | Email: #{oferta.ofertante.email}" />
+						<h:outputText value=" | #{oferta.ofertante.redesSociais}" />
+					</p:panel>
+				</p:dataGrid>
+			</h:form>
+			<br />
+
+		</div>
+	</pm:page>
+</h:body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view renderKitId="PRIMEFACES_MOBILE" />
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<pm:page id="first">
+		<pm:header title="Ver Ofertas" swatch="b" style="font-size: small" />
+		<div align="left" style="width: 85%">
+			<h:form>
+				<p:link outcome="/login.xhtml" value="Sou cadastrado" />
+			</h:form>
+		</div>
+
+		<div align="center">
+			<h:form enctype="multipart/form-data" style="width:85%"
+				prependId="false">
+				<!--<div>
+                        <ui:include src="/templates/menu_con.xhtml" />
+                    </div>-->
+				<br />
+				<p:outputLabel value="Selecione um bairro ou cidade:" />
+				<p:messages id="messages" autoUpdate="true" />
+				<br />
+				<p:outputLabel for="selecioneuf" value="UF: " />
+				<p:selectOneMenu id="selecioneuf"
+					value="#{ofertaBean.oferta.ofertante.
+                                              pessoaJuridica.endereco.uf}">
+					<f:selectItem itemLabel="AC" itemValue="AC" />
+					<f:selectItem itemLabel="AL" itemValue="AL" />
+					<f:selectItem itemLabel="AP" itemValue="AP" />
+					<f:selectItem itemLabel="AM" itemValue="AM" />
+					<f:selectItem itemLabel="BA" itemValue="BA" />
+					<f:selectItem itemLabel="CE" itemValue="CE" />
+					<f:selectItem itemLabel="DF" itemValue="DF" />
+					<f:selectItem itemLabel="ES" itemValue="ES" />
+					<f:selectItem itemLabel="GO" itemValue="GO" />
+					<f:selectItem itemLabel="MA" itemValue="MA" />
+					<f:selectItem itemLabel="MT" itemValue="MT" />
+					<f:selectItem itemLabel="MS" itemValue="MS" />
+					<f:selectItem itemLabel="MG" itemValue="MG" />
+					<f:selectItem itemLabel="PA" itemValue="PA" />
+					<f:selectItem itemLabel="PB" itemValue="PB" />
+					<f:selectItem itemLabel="PR" itemValue="PR" />
+					<f:selectItem itemLabel="PE" itemValue="PE" />
+					<f:selectItem itemLabel="PI" itemValue="PI" />
+					<f:selectItem itemLabel="RJ" itemValue="RJ" />
+					<f:selectItem itemLabel="RN" itemValue="RN" />
+					<f:selectItem itemLabel="RS" itemValue="RS" />
+					<f:selectItem itemLabel="RO" itemValue="RO" />
+					<f:selectItem itemLabel="RR" itemValue="RR" />
+					<f:selectItem itemLabel="SC" itemValue="SC" />
+					<f:selectItem itemLabel="SP" itemValue="SP" />
+					<f:selectItem itemLabel="SE" itemValue="SE" />
+					<f:selectItem itemLabel="TO" itemValue="TO" />
+					<f:ajax event="change" listener="#{ofertaBean.cidadePorUf}"
+						render="selcidade messages" />
+				</p:selectOneMenu>
+				<p:outputLabel for="selcidade" value="Cidade: " />
+				<p:selectOneMenu id="selcidade" effect="fold"
+					value="#{ofertaBean.oferta.ofertante.
+                                              pessoaJuridica.endereco.cidade}">
+					<f:selectItems value="#{ofertaBean.cidades}" />
+					<f:ajax event="change" listener="#{ofertaBean.bairroPorCidade}"
+						render="selbairro messages" />
+				</p:selectOneMenu>
+				<p:outputLabel for="selbairro" value="Bairro: " />
+				<p:selectOneMenu id="selbairro" effect="fold"
+					value="#{ofertaBean.oferta.ofertante.
+                                              pessoaJuridica.endereco.bairro}">
+					<f:selectItems value="#{ofertaBean.bairros}" />
+				</p:selectOneMenu>
+				<br />
+				<p:commandButton style="font-size: small" ajax="false"
+					action="#{ofertaBean.listaOfertasBairro}" value="Listar" />
+			</h:form>
+			<br />
+
+		</div>
+	</pm:page>
+</h:body>
+
+</html>

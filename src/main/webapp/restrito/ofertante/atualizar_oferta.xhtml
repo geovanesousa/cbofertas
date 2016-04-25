@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" >
+
+    <f:view renderKitId="PRIMEFACES_MOBILE" /> 
+
+    <h:head>
+
+    </h:head>
+
+    <h:body>
+        <pm:page id="first">
+            <pm:header title="Gerenciar Ofertas" swatch="b"
+                       style="font-size: small" />
+            <div align="center">
+                <h:form id="guias" enctype="multipart/form-data" style="width:85%"
+                        prependId="false">
+                    <div>
+                        <ui:include src="/templates/menu_ofe.xhtml" />
+                    </div>
+                    <p:outputLabel value="Atualizar" />
+                    <p:messages id="messages" autoUpdate="true">
+                    </p:messages>
+                    <br />
+                    <p:outputLabel for="cod" value="Cód. Oferta:" />
+                    <p:inputText id="cod" requiredMessage="Cód. obrigatório!"
+                                 value="#{ofertaBean.oferta.id}" required="true" >
+                     <f:ajax event="blur" render="guias"
+								listener="#{ofertaBean.consultarOfertaPorId}" />            
+                     </p:inputText>
+                    <p:outputLabel for="titulo" value="Título:" />
+                    <p:inputText id="titulo" maxlength="50"
+                                 requiredMessage="Título obrigatório!"
+                                 value="#{ofertaBean.oferta.nomeOferta}" 
+                                 required="true" />
+                    <p:outputLabel for="descricao" value="Descrição:" />
+                    <p:inputTextarea id="descricao" maxlength="50"
+                                     requiredMessage="Descrição obrigatória!"
+                                     value="#{ofertaBean.oferta.descricao}" 
+                                     required="true" />
+                    <p:outputLabel for="categoria" value="Categoria:" />
+                    <p:inputText id="categoria" maxlength="25"
+                                 requiredMessage="Categoria obrigatória!"
+                                 value="#{ofertaBean.oferta.categoria}" 
+                                 required="true" />
+                    <p:outputLabel for="preco" value="Preço R$:" />
+                    <p:inputText id="preco" 
+                                 requiredMessage="Preço obrigatório!"
+                                 value="#{ofertaBean.oferta.preco}" 
+                                 required="true" />
+                    <p:commandButton value="Atualizar" style="font-size: small"
+                                     icon="ui-icon-back" ajax="false"
+                                     action="#{ofertaBean.atualizarOferta}" /> 
+                    <p:commandButton value="Limpar Campos" style="font-size: small"
+                                     icon="ui-icon-delete" ajax="false"
+                                     action="#{ofertaBean.limparCampos}" />
+                </h:form>
+                <br />
+            </div>
+        </pm:page>
+    </h:body>
+
+</html>

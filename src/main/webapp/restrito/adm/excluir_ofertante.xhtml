@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<f:view renderKitId="PRIMEFACES_MOBILE" />
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<pm:page id="first">
+		<pm:header title="Gerenciar Ofertantes" swatch="b"
+			style="font-size: small" />
+		<div align="center">
+			<h:form enctype="multipart/form-data" style="width:85%"
+				prependId="false">
+				<div>
+					<ui:include src="/templates/menu_adm.xhtml" />
+				</div>
+				<p:outputLabel value="Excluir" />
+				<p:messages id="messages" autoUpdate="true">
+				</p:messages>
+				<br />
+				<p:outputLabel for="cnpj" value="CNPJ (somente números):" />
+				<p:inputText id="cnpj" maxlength="14"
+					requiredMessage="CNPJ obrigatório!"
+					value="#{ofertanteBean.ofertante.
+                                                  pessoaJuridica.cnpj}"
+					required="true">
+					<f:ajax event="blur" render="cnpj rzsocial nmfantasia"
+						listener="#{ofertanteBean.nmOfertantePorCnpj}" /> 
+				</p:inputText>
+				<p:outputLabel for="rzsocial" value="Razão Social:" />
+				<p:inputText id="rzsocial" readonly="true"
+					value="#{ofertanteBean.ofertante.
+                                                  pessoaJuridica.razaSocial}" />
+				<p:outputLabel for="nmfantasia" value="Nome Fantasia:" />
+				<p:inputText id="nmfantasia" readonly="true"
+					value="#{ofertanteBean.ofertante.
+                                                  pessoaJuridica.nomeFantasia}" />
+				<p:commandButton value="Excluir" style="font-size: small"
+					icon="ui-icon-delete" ajax="false" action="#{ofertanteBean.excluirOfertante}" />
+				<p:commandButton value="Limpar Campos" style="font-size: small"
+					icon="ui-icon-delete" ajax="false"
+					action="#{ofertanteBean.limparCampos}" />
+			</h:form>
+			<br />
+		</div>
+	</pm:page>
+</h:body>
+
+</html>
